@@ -45,7 +45,7 @@ results_filename = 'S_results_FBA.xls';
 
 
 %% ------------ Simulations ------------
-sim = 'NoAcetate';
+sim = 'AcCoAPrCoAprod';
 max_or_min = 'min'; %maximum simulation: "max"; minimum simulation: "min"
 target = CO2Prod; %flux to max or minimize
 
