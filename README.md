@@ -10,7 +10,11 @@ Corresponding Author: Leonor Guedes da Silva, LeonorGuedesdaSilva@gmail.com
 ## How to...
 
 1. Download or Clone "anaerobic-flex-pao" into your computer
-2. Open MATLAB (this was tested in MATLAB 2018a for macOS Catalina) and run:
+2. Open MATLAB (this was tested in MATLAB 2018a for macOS Catalina) and run, depending on the purpose:
+    * ExpDataReconciliation.m
     * fba.m (adjust variable "sim" with the name of the desired simulation)
-    
-3. Once the simulation is done, results can be checked in 'S_results_FBA.xls' 
+    * plot_stoichiometric_surface.m (plotting options available inside script)
+
+3. Once the simulation is done, results can be checked in:
+    * S_results_FBA.xls
+    * tableS5_LiteratureData_reconciled.xlsx
