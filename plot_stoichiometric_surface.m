@@ -37,9 +37,12 @@ H2_TCA = 0; % 1 YES, 0 NO
 
 %% Import simulation data
 fba_results_file = 'S_results_FBA.xls';
+optimum_sim = 'AcCoAPrCoAprod_minCO2Prod'; %base case: AcCoAPrCoAprod_minCO2Prod
+minimum_sim = 'AcCoAPrCoAprod_maxCO2Prod'; %base case: AcCoAPrCoAprod_maxCO2Prod
 
-NUM = xlsread( fba_results_file , 'AcCoAPrCoAprod_minCO2Prod' ); % 'AcCoAPrCoAprod_maxPHA' or 'normal' or 'withH2' or 'withNOG' or 'fullTCA'
-% or 'withPH2MV' or 'H2supplied_maxPHA' or 'GlutamateProd_maxPHA'
+% Optimum scenario
+NUM = xlsread( fba_results_file , optimum_sim ); 
+
 CO2_optimum = NUM(:,6); %mol
 ATP_optimum = NUM(:,17); %mol
 AcCoA_optimum = NUM(:,20); %mol
@@ -66,8 +69,9 @@ oxTCA_Cfed_optimum = 4*oxTCA_optimum ./ Cfed; %Emol/Cmol
 redTCA_Cfed_optimum = -4*redTCA_optimum ./ Cfed; %Emol/Cmol
 TCAGOX_Cfed_optimum = 2*TCAGOX_optimum ./ Cfed; %Emol/Cmol
 
-NUM = xlsread( fba_results_file , 'AcCoAPrCoAprod_maxCO2Prod' ); % 'AcCoAPrCoAprod_minPHA' or'ex3' or 'normal_minPHA' or 'H2supplied_maxPHV'
-% or 'GlutamateProd_minPHA'
+% Minimum scenario
+NUM = xlsread( fba_results_file , minimum_sim );
+
 CO2_minimum = NUM(:,6); %mol
 ATP_minimum = NUM(:,17); %mol
 AcCoA_minimum = NUM(:,20); %mol
@@ -97,7 +101,7 @@ Gly_Cfed = round(Gly_Cfed, 4) - round(6/18, 4); %place origin in stoichiometric 
 if H2_TCA
     
     % H2 production
-    NUM = xlsread( fba_results_file , 'H2Prod_minCO2Prod' );
+    NUM = xlsread( fba_results_file , 'H2Prod_limitedPEPC_minCO2Prod' );
     CO2_optimum_H2 = NUM(:,6); %mol
     AcCoA_optimum_H2 = NUM(:,20); %mol
     PrCoA_optimum_H2 = NUM(:,21); %mol
@@ -110,7 +114,7 @@ if H2_TCA
     AcCoA_Cfed_optimum_H2 = 2*AcCoA_optimum_H2 ./ Cfed_H2; %Cmol/Cmol
     PrCoA_Cfed_optimum_H2 = 3*PrCoA_optimum_H2 ./ Cfed_H2; %Cmol/Cmol
     
-    NUM = xlsread( fba_results_file , 'H2Prod_maxCO2Prod' );
+    NUM = xlsread( fba_results_file , 'H2Prod_limitedPEPC_maxCO2Prod' );
     CO2_minimum_H2 = NUM(:,6); %mol
     AcCoA_minimum_H2 = NUM(:,20); %mol
     PrCoA_minimum_H2 = NUM(:,21); %mol
