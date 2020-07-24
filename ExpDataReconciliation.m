@@ -15,6 +15,14 @@
 % Output:
 %       - Reconciled Data
 %
+% Description:
+% Data reconciliation is a method based on a weighted linear regression
+% that gives the best estimate for measurements based on their associated
+% error and in, this case, in such way that the overall carbon and electron
+% balances are closed according to the model: 
+%   -> Substrates: 	Acetate and glucose (glycogen monomer) 
+%   -> Products: 	PHB, PHV, PH2MV and CO2
+
 clear
 close all
 clc
