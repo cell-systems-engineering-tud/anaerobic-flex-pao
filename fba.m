@@ -45,7 +45,7 @@ results_filename = 'S_results_FBA.xls';
 
 
 %% ------------ Simulations ------------
-sim = 'AcCoAPrCoAprod';
+sim = 'AcCoAPrCoAprod'; %base case: AcCoAPrCoAprod
 max_or_min = 'min'; %maximum simulation: "max"; minimum simulation: "min"
 target = CO2Prod; %flux to max or minimize
 
@@ -72,9 +72,17 @@ switch sim
     case 'H2Prod'
         disp('------------Optimization for anaerobic PHA from acetate and glycogen------------')
         disp('------------(with H2 production)------------')
+       
+        knockouts = [PHBAcc PHVAcc NOG SucDH TCA PPP];        
 
-        knockouts = [PHBAcc PHVAcc NOG TCA SucDH PPP];
-    
+    case 'H2Prod_limitedPEPC'
+        disp('------------What if PAOs are kinetically limited in their PEPC+redTCA route?------------')
+        disp('------------(with H2 production allowed)------------') 
+        
+        knockouts = [PHBAcc PHVAcc NOG SucDH TCA PPP];
+        upperbounded_idx = PEPC;
+        upperbounded_flx = 0;
+        
     %% ------------ EXTRA Simulations ------------
     case 'PHB_PHV'
         disp('------------Optimization for anaerobic PHB+PHV from acetate and glycogen------------')
