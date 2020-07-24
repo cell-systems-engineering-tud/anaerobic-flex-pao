@@ -1,7 +1,5 @@
 # Ignore these file extensions:
 
 *.*~
-*.xls
-*.xlsx
 *.DS_Store
 
